@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	content, err := os.ReadFile("../day2-input.txt")
+	content, err := os.ReadFile("../day3-input.txt")
 	if err != nil {
 		fmt.Println("Error reading file:", err)
 		return
@@ -72,6 +72,7 @@ func safeCheck(arrNumbers []string) bool {
 	return inc || dec
 }
 
+// PART TWO
 func safeCheckPartTwo(arrNumbers []string) bool {
 	if safeCheck(arrNumbers) {
 		return true
