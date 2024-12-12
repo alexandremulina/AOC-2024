@@ -15,19 +15,22 @@ func main() {
 		return
 	}
 	lines := strings.Split(string(content), "\n")
-	fmt.Println(lines[0])
 	pairs := [][2]int{}
 	arraysNums := [][]int{}
 	for _, line := range lines {
-		nums := strings.Split(line, "|")
-		if len(nums) == 2 {
-			num1, _ := strconv.Atoi(nums[0])
-			num2, _ := strconv.Atoi(nums[1])
+		if strings.Contains(line, "|") {
+			parts := strings.Split(line, "|")
+			num1, _ := strconv.Atoi(strings.TrimSpace(parts[0]))
+			num2, _ := strconv.Atoi(strings.TrimSpace(parts[1]))
 			pairs = append(pairs, [2]int{num1, num2})
+			continue
 		}
-		nums2 := strings.Split(line, ",")
+		if line == "" {
+			continue
+		}
+		nums := strings.Split(line, ",")
 		array := []int{}
-		for _, numStr := range nums2 {
+		for _, numStr := range nums {
 			numStr = strings.TrimSpace(numStr)
 			if numStr == "" {
 				continue
@@ -40,10 +43,7 @@ func main() {
 		if len(array) > 0 {
 			arraysNums = append(arraysNums, array)
 		}
-
 	}
-	// fmt.Println("Pairs", pairs)
-	// fmt.Println("arraysNums", arraysNums)
 	checkRule(pairs, arraysNums)
 }
 
