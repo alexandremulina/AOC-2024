@@ -8,20 +8,23 @@ import (
 )
 
 func main() {
-	content, err := os.ReadFile("../day3-input.txt")
+	content, err := os.ReadFile("../day2-input.txt")
 	if err != nil {
 		fmt.Println("Error reading file:", err)
 		return
 	}
 	lines := strings.Split(string(content), "\n")
 	sum := 0
-	for _, line := range lines {
+	for i, line := range lines {
 		numbers := strings.Fields(line)
-		fmt.Println(numbers)
-		if safeCheck(numbers) {
+		if safeCheckPartTwo(numbers) {
+			fmt.Printf("Line %d: SAFE - %v\n", i+1, numbers)
+		} else {
+			fmt.Printf("Line %d: UNSAFE - %v\n", i+1, numbers)
+		}
+		if safeCheckPartTwo(numbers) {
 			sum++
 		}
-
 	}
 	fmt.Println("SOMA:", sum)
 }
