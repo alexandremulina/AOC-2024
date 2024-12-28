@@ -88,7 +88,6 @@ func moveFiles(diskMap string) []string {
 		currentMap = newMap
 	}
 
-	// Debug output
 	fmt.Println("\nInitial state:")
 	fmt.Println(result[0])
 	fmt.Println("\nFinal state:")
